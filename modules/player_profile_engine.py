@@ -65,17 +65,8 @@ class PlayerProfile:
         print(f"Legit Score: {self.legit_score()}/100")
 
 
-# === Simulated Player Examples ===
 
-players = [
-    PlayerProfile("SweatGod420", datetime.now() - timedelta(days=15), 40, 300, 40, ["chairmaster", "sweatyTeammate", "unknown99"], 0, 8),
-    PlayerProfile("SniperQueen", datetime.now() - timedelta(days=600), 600, 5000, 2000, ["trustedPlayer", "random1"], 2, 3),
-    PlayerProfile("FreshMeat22", datetime.now() - timedelta(days=5), 10, 80, 10, ["chair99"], 0, 10),
-    PlayerProfile("RealGrinder", datetime.now() - timedelta(days=800), 1200, 7000, 4000, ["oldFriend", "grindBuddy"], 1, 4)
-]
-
-for p in players:
-    p.display_profile()
+ 
 
 # === Save Profiles to JSON ===
 
@@ -85,3 +76,24 @@ with open("data/player_profiles.json", "w") as f:
     json.dump(data, f, indent=4)
 
 print("\n✅ Player profiles saved to 'data/player_profiles.json'")
+
+
+def main():
+ 
+    players = [
+        PlayerProfile("SweatGod420", datetime.now() - timedelta(days=15), 40, 300, 40, ["chairmaster", "sweatyTeammate", "unknown99"], 0, 8),
+        PlayerProfile("SniperQueen", datetime.now() - timedelta(days=600), 600, 5000, 2000, ["trustedPlayer", "random1"], 2, 3),
+        PlayerProfile("FreshMeat22", datetime.now() - timedelta(days=5), 10, 80, 10, ["chair99"], 0, 10),
+        PlayerProfile("RealGrinder", datetime.now() - timedelta(days=800), 1200, 7000, 4000, ["oldFriend", "grindBuddy"], 1, 4)
+    ]
+
+    for p in players:
+        p.display_profile()
+
+    data = [p.to_dict() for p in players]
+
+    with open("data/player_profiles.json", "w") as f:
+        json.dump(data, f, indent=4)
+
+    print("\n✅ Player profiles saved to 'data/player_profiles.json'")
+
